@@ -1,0 +1,939 @@
+/*Task 1\48
+ФУНКЦИЯ КАК ЗНАЧЕНИЕ
+Дополни код так, чтобы в переменной result был результат выполнения функции makePizza,
+ а в переменной pointer была ссылка на функцию makePizza.
+ 
+ how to do*/
+
+/*function makePizza() {
+  return "Your pizza is being prepared, please wait.";
+}
+// Change code below this line
+
+const result = makePizza();
+
+console.log(makePizza(result));
+const pointer = makePizza;*/
+
+
+/*Task 2\48
+Дополни функцию makeMessage так, чтобы она ожидала вторым параметром (параметр callback) колбэк-функцию
+ и возвращала ее вызов. Функция deliverPizza или makePizza будет передаваться как колбэк и ожидать аргументом
+  имя готовой доставляемой пиццы.
+  
+  how to do*/
+
+ /* function deliverPizza(pizzaName) {
+  return `Delivering ${pizzaName} pizza.`;
+}
+
+function makePizza(pizzaName) {
+  return `Pizza ${pizzaName} is being prepared, please wait...`;
+}
+
+// Chande code below this line
+function makeMessage(pizzaName, callback ) {
+  return callback(pizzaName);
+}*/
+
+/* Task 3\48
+ІНЛАЙН-КОЛБЕКИ
+Доповнить другий виклик функції makePizza(pizzaName, callback), передавши другим аргументом інлайн колбек-функцію eatPizza(pizzaName),
+ яка логує рядок "Eating pizza <имя пиццы>".
+
+how to do*/
+
+/*function makePizza(pizzaName, callback) {
+  console.log(`Pizza ${pizzaName} is being prepared, please wait...`);
+  callback(pizzaName);
+}
+
+makePizza("Royal Grand", function deliverPizza(pizzaName) {
+  console.log(`Delivering pizza ${pizzaName}.`);
+});
+// Change code below this line
+
+makePizza("Ultracheese", function eatPizza(pizzaName){
+  console.log(`Eating pizza ${pizzaName}.`);
+}  );*/
+
+/*Task 4\48
+КІЛЬКА КОЛБЕКІВ
+Потрібно написати логіку обробки замовлення піци. Виконай рефакторинг методу orderтак, щоб він приймав
+ другим і третім параметрами два колбеки onSuccessі onError.
+
+Якщо у властивості pizzasнемає піци з назвою з параметра pizzaName, метод orderповинен повертати результат
+ виклику колбека onError, передаючи йому аргументом рядок "There is no pizza with a name <имя пиццы>
+  in the assortment."
+Якщо властивість pizzasмає піцу з назвою з параметра pizzaName, метод orderповинен повертати результат
+ виклику колбека onSuccess, передаючи йому аргументом ім'я замовленої піци.
+Після оголошення об'єкта pizzaPalaceми додали колбеки та виклики методів. Будь ласка, нічого там не змінюй.
+
+how to do*/
+
+/*  const pizzaPalace = {
+  pizzas: ['Ultracheese', 'Smoked', 'Four meats'],
+  order(pizzaName, onSuccess, onError) {
+    for (const pizza of this.pizzas){
+      if(pizza === pizzaName ){
+        return onSuccess (pizzaName);
+      }
+    }
+  
+     return onError(`There is no pizza with a name ${pizzaName} in the assortment.`);
+
+},
+};
+// Change code above this line
+
+// Callback for onSuccess
+function makePizza(pizzaName) {
+  return `Your order is accepted. Cooking pizza ${pizzaName}.`;
+}
+
+// Callback for onError
+function onOrderError(error) {
+  return `Error! ${error}`;
+}
+
+// Method calls with callbacks
+pizzaPalace.order('Smoked', makePizza, onOrderError);
+pizzaPalace.order('Four meats', makePizza, onOrderError);
+pizzaPalace.order('Big Mike', makePizza, onOrderError);
+pizzaPalace.order('Vienna', makePizza, onOrderError);
+*/
+
+/*Task 5\48
+МЕТОДFOREACH(CALLBACK)
+Функція calculateTotalPrice(orderedItems)приймає один параметр orderedItems- масив чисел і розраховує
+ загальну суму його елементів, яка зберігається в змінній totalPriceі повертається як результат роботи функції.
+
+Виконай рефакторинг функції так, щоб замість циклу forвона використовувала метод forEach.
+how to do*/
+
+/*function calculateTotalPrice(orderedItems) {
+  let totalPrice = 0;
+  // Change code below this line
+
+  orderedItems.forEach(function (item) {
+  totalPrice += item;
+});
+
+  // Change code above this line
+  return totalPrice;
+}*/
+
+/*Task 6\48
+ЗАВДАННЯ. ФІЛЬТРУВАННЯ МАСИВУ ЧИСЕЛ
+Функція filterArray(numbers, value)приймає масив чисел numbersі повертає новий масив,
+ в якому будуть тільки елементи оригінального масиву, які більше значення параметра value.
+
+Виконай рефакторинг функції так, щоб замість циклу forвона використовувала метод forEach.
+
+how to do*/
+
+/*function filterArray(numbers, value) {
+  const filteredNumbers = [];
+  // Change code below this line
+numbers.forEach(function (numbers, index) {
+if (number > value ){
+  filteredNumbers.push(number);
+}
+  
+});
+  
+ 
+  // Change code above this line
+  return filteredNumbers;
+}
+*/
+
+/*Task 7\48
+ЗАВДАННЯ. ЗАГАЛЬНІ ЕЛЕМЕНТИ
+Функція getCommonElements(firstArray, secondArray)приймає два масиви довільної довжини
+ в параметри firstArrayі secondArray, і повертає новий масив їх загальних елементів, тобто
+  тих, що є в обох масивах.
+
+Виконай рефакторинг функції так, щоб замість циклу forвона використовувала метод forEach.
+
+how to do*/
+
+/*function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
+  // Change code below this line
+
+  firstArray.forEach (function (firstArray, index) {
+    if (secondArray.includes(firstArray)) {
+      commonElements.push(firstArray);
+    }
+  })
+
+  return commonElements;
+  // Change code above this line
+}*/
+
+/*Task 8\48
+СТРЕЛОЧНЫЕ ФУНКЦИИ.
+Выполни рефакторинг функции calculateTotalPrice() так, чтобы она была объявлена как стрелочная.
+how to do*/
+
+/*// Change code below this line
+const calculateTotalPrice = (quantity, pricePerItem) =>
+ {
+  // Change code above this line
+  return quantity * pricePerItem;
+}
+*/
+
+/*Task 9\48
+НЕЯВНЫЙ ВОЗВРАТ
+Выполни рефакторинг функции calculateTotalPrice() так, чтобы она использовала неявный возврат.
+
+how to do*/
+// Change code below this line
+/*const calculateTotalPrice = (quantity, pricePerItem) =>  quantity * pricePerItem;*/
+// Change code above this line
+
+/*Task 10\48
+СТРЕЛОЧНЫЕ ФУНКЦИИ КАК КОЛЛБЕКИ
+Выполни рефакторинг функции calculateTotalPrice(orderedItems) заменив её объявление
+ на стрелочную функцию. Замени коллбек-функцию передаваемую в метод forEach() на стрелочную функцию.
+ 
+ how to do*/
+
+ // Change code below this line
+/*const calculateTotalPrice = (orderedItems) => {
+  let totalPrice = 0;
+
+  orderedItems.forEach((item) => {
+    totalPrice += item;
+  });
+
+  return totalPrice;
+}*/
+// Change code above this line
+
+/*Task 11\48
+ЗАДАЧА. ФИЛЬТРАЦИЯ МАССИВА ЧИСЕЛ 2.0
+Замени объявление функции filterArray() и коллбек для метода forEach() на стрелочные функции.
+how to do*/
+
+/*// Change code below this line
+const filterArray = (numbers, value) => {
+  const filteredNumbers = [];
+
+  numbers.forEach((number) => {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  });
+
+  // Change code above this line
+  return filteredNumbers;
+}
+*/
+
+/*Task 12\48
+ЗАДАЧА. ОБЩИЕ ЭЛЕМЕНТЫ 2.0
+Замени объявление функции getCommonElements() и коллбек для метода forEach() на стрелочные функции.
+
+how to do*/
+// Change code below this line
+/*const getCommonElements = (firstArray, secondArray) => {
+  const commonElements = [];
+
+  firstArray.forEach((element) => {
+    if (secondArray.includes(element)) {
+      commonElements.push(element);
+    }
+  });
+
+  // Change code above this line
+  return commonElements;
+}*/
+
+/*Task 13\48
+ЧИСТЫЕ ФУНКЦИИ
+Функция changeEven(numbers, value) принимает массив чисел numbers и обновляет каждый элемент,
+ значение которого это чётное число, добавляя к нему значение параметра value.
+
+Выполни рефакторинг функции так, чтобы она стала чистой - не изменяла массив чисел numbers, 
+а создавала, наполняла и возвращала новый массив с обновлёнными значениями. 
+how to do*/
+
+/*function changeEven(numbers, value) {
+  // Change code below this line
+  const newArray = [];
+  
+  numbers.forEach(element => {
+    if (element % 2 === 0) {
+      newArray.push(element + value);
+    } else newArray.push(element);
+  });
+  return newArray;
+  // Change code above this line
+}*/
+
+/*Task 14\48
+МЕТОДMAP()
+Дополни код так, чтобы в переменной planetsLengths получился массив длин
+ названий планет. Обязательно используй метод map().
+ how to do*/
+
+ /*const planets = ["Earth", "Mars", "Venus", "Jupiter"];
+// Change code below this line
+const planetsLengths = planets.map(planet => planet.length);
+console.log(planetsLengths);
+*/
+
+/*Task 15\48
+МЕТОД MAP() И МАССИВ ОБЪЕКТОВ
+Используя метод map() сделай так, чтобы в переменной titles получился массив названий книг
+ (свойство title) из всех объектов массива books.
+how to do
+*/
+/*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+// Change code below this line
+
+const titles = books.map(book => book.title );
+console.log(titles);
+*/
+
+/*Task 16\48
+МЕТОД FLATMAP()
+Используя метод flatMap() сделай так, чтобы в переменной genres получился массив всех
+ жанров книг (свойство genres) из массива книг books.
+how to do
+*/
+
+/*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism"],
+  },
+];
+// Change code below this line
+
+const genres = books.flatMap(book => book.genres);
+*/
+
+/*Task 17\48
+ЗАДАЧА. ИМЕНА ПОЛЬЗОВАТЕЛЕЙ
+Дополни функцию getUserNames(users) так, чтобы она возвращала массив имён пользователей (свойство name)
+ из массива объектов в параметре users.
+ how to do*/
+
+/*// Change code below this line
+const getUserNames = users => { 
+return users.map(user => user.name);
+  };
+  // Change code above this line*/
+
+/*Task 18\48
+ЗАДАЧА. ПОЧТЫ ПОЛЬЗОВАТЕЛЕЙ
+Дополни функцию getUserEmails(users) так, чтобы она возвращала массив почтовых адресов
+ пользователей (свойство email) из массива объектов в параметре users.
+how to do
+*/
+/*// Change code below this line
+const getUserEmails = users => {
+   return users.map(user => user.email); 
+
+  };
+  // Change code above this line
+*/
+
+/*Task 19\48
+МЕТОДЫ FILTER И FIND
+Дополни код так, чтобы в переменной evenNumbers получился массив чётных чисел из массива numbers,
+ а в переменной oddNumbers массив нечётных. Обязательно используй метод filter().
+how to do*/
+
+/*const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+// Change code below this line
+
+const evenNumbers = numbers.filter(numbers => numbers % 2 ===0);
+const oddNumbers = numbers.filter(numbers => numbers % 2 !==0);*/
+
+/*Task 20\48
+ФИЛЬТРАЦИЯ УНИКАЛЬНЫХ ЭЛЕМЕНТОВ
+Дополни код так, чтобы в переменной allGenres был массив всех жанров книг (свойство genres)
+ из массива books, а в переменной uniqueGenres массив уникальных жанров - без повторений.
+how to do*/
+
+/*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    genres: ["adventure", "history"],
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    genres: ["fiction", "mysticism"],
+  },
+  {
+    title: "Redder Than Blood",
+    author: "Tanith Lee",
+    genres: ["horror", "mysticism", "adventure"],
+  },
+];
+// Change code below this line
+const allGenres = books.flatMap(book => book.genres);
+const uniqueGenres = allGenres.filter(
+  (genres, index, array) => array.indexOf(genres) === index
+);
+
+*/
+
+/*Task 21\48
+МЕТОД FILTER() И МАССИВ ОБЪЕКТОВ
+Используя метод filter() дополни код так, чтобы:
+
+В переменной topRatedBooks получился массив книг рейтинг которых (свойство rating) больше либо равно
+ значению переменной MIN_RATING.
+В переменной booksByAuthor получился массив книг написанных автором с именем (свойство author) которое
+ совпадает со значением в переменной AUTHOR.
+ how to do*/
+ /*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+
+const MIN_RATING = 8;
+const AUTHOR = "Bernard Cornwell";
+// Change code below this line
+
+const topRatedBooks = books.filter(book => book.rating >= MIN_RATING );
+const booksByAuthor = books.filter(book => book.author === AUTHOR);
+*/
+
+/*Task 22\48
+ЗАДАЧА. ПОЛЬЗОВАТЕЛИ С ЦВЕТОМ ГЛАЗ
+Дополни функцию getUsersWithEyeColor(users, color) так, чтобы она
+ возвращала массив пользователей у которых цвет глаз (свойство eyeColor) совпадает со значением параметра
+  color.
+  how to do*/
+  /*// Change code below this line
+const getUsersWithEyeColor = (users, color) => 
+ users.filter(user => user.eyeColor === color).map(user => user);
+
+
+// Change code above this line*/
+
+/*Task 23\48
+ЗАДАЧА. ПОЛЬЗОВАТЕЛИ В ВОЗРАСТНОЙ КАТЕГОРИИ
+Дополни функцию getUsersWithAge(users, minAge, maxAge) так, чтобы она возвращала массив пользователей,
+ возраст которых (свойство age) попадает в промежуток от minAge до maxAge.
+how to do
+*/
+
+/*// Change code below this line
+const getUsersWithAge = (users, minAge, maxAge) => users.filter(user => user.age >= minAge && 
+user.age <= maxAge);
+ // Change code above this line*/
+
+ /*Task 24\48
+ ЗАДАЧА. ПОЛЬЗОВАТЕЛИ С ДРУГОМ
+ Дополни функцию getUsersWithFriend(users, friendName) так, чтобы она возвращала массив пользователей
+  у которых есть друг с именем в параметре friendName. Массив друзей пользователя хранится в свойстве
+   friends.
+   how to do*/
+   /*// Change code below this line
+const getUsersWithFriend = (users, friendName) => {
+   return users.filter(user => user.friends.includes(friendName));
+};
+// Change code above this line
+*/
+
+/*
+ /*Task 25\48
+ ЗАДАЧА. СПИСОК ДРУЗЕЙ
+ Дополни функцию getFriends(users) так, чтобы она возвращала массив друзей всех пользователей
+  (свойство friends). У нескольких пользователей могут быть одинаковые друзья, сделай так чтобы
+   возвращаемый массив не содержал повторений.
+    how to do*/
+
+   /*// Change code below this line
+const getFriends = (users) => {
+   return users.flatMap(({friends}) => friends).filter((element, index, array) => array.indexOf(element) === index);
+};
+// Change code above this line
+*/
+
+/*Task 26\48
+ЗАДАЧА. АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ
+Дополни функцию getActiveUsers(users) так, чтобы она возвращала массив активных пользователей,
+ значение свойства isActive которых true.
+how to do*/
+/*// Change code below this line
+const getActiveUsers = (users) => {
+   return users.filter((user) => user.isActive);
+  
+};
+// Change code above this line
+*/
+
+/*Task 27\48
+ЗАДАЧА. НЕАКТИВНЫЕ ПОЛЬЗОВАТЕЛИ
+Дополни функцию getInactiveUsers(users) так, чтобы она возвращала массив неактивных пользователей,
+ значение свойства isActive которых false.
+ how to do*/
+
+ /*// Change code below this line
+const getInactiveUsers = (users) => {
+return users.filter((user) => (!user.isActive));
+};
+// Change code above this line
+*/
+
+/*Task 28\48
+МЕТОД FIND()
+Используя метод find() дополни код так, чтобы:
+
+В переменной bookWithTitle получился объект книги название которой (свойство title) совпадает со значением
+ переменной BOOK_TITLE.
+В переменной bookByAuthor получился объект книги автор который (свойство author) совпадает
+ со значением переменной AUTHOR.
+ how to do */
+
+ /*const books = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'Beside Still Waters',
+    author: 'Robert Sheckley',
+    rating: 8.51,
+  },
+  {
+    title: 'The Dream of a Ridiculous Man',
+    author: 'Fyodor Dostoevsky',
+    rating: 7.75,
+  },
+  { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+];
+const BOOK_TITLE = 'The Dream of a Ridiculous Man';
+const AUTHOR = 'Robert Sheckley';
+// Change code below this line
+
+const bookWithTitle = books.find(book => book.title === BOOK_TITLE);
+const bookByAuthor = books.find(book => book.author === AUTHOR);
+*/
+
+/*Task 29\48
+ЗАДАЧА. ПОЛЬЗОВАТЕЛЬ С ПОЧТОЙ
+Дополни функцию getUserWithEmail(users, email) так, чтобы она возвращала объект пользователя,
+ почта которого (свойство email) совпадает со значением параметра email.
+ со значением переменной AUTHOR.
+ how to do */
+
+ /*// Change code below this line
+const getUserWithEmail = (users, email) => {
+   return users.find((user) => user.email === email);
+};
+// Change code above this line*/
+
+/*Task 30\48
+МЕТОД EVERY()
+Используя метод every() дополни код так, чтобы:
+
+В переменной eachElementInFirstIsEven был результат проверки всех элементов массива firstArray на чётность.
+В переменной eachElementInFirstIsOdd был результат проверки всех элементов массива firstArray на нечётность.
+В переменной eachElementInSecondIsEven был результат проверки всех элементов массива secondArray на чётность.
+В переменной eachElementInSecondIsOdd был результат проверки всех элементов массива secondArray на нечётность.
+В переменной eachElementInThirdIsEven был результат проверки всех элементов массива thirdArray на чётность.
+В переменной eachElementInThirdIsOdd был результат проверки всех элементов массива thirdArray на нечётность.
+ how to do*/
+
+ /*const firstArray = [26, 94, 36, 18];
+const secondArray = [17, 61, 23];
+const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+// Change code below this line
+
+const eachElementInFirstIsEven = firstArray.every(element =>  element  % 2 === 0);
+const eachElementInFirstIsOdd = firstArray.every(element =>  element  % 2 === !0);
+
+const eachElementInSecondIsEven = secondArray.every(element =>  element  % 2 === 0);
+const eachElementInSecondIsOdd = secondArray.every(element =>  !element  % 2 === 0);
+
+const eachElementInThirdIsEven = thirdArray.every(element =>  element  % 2 === 0);
+const eachElementInThirdIsOdd = thirdArray.every(element =>  element  % 2 === !0);*/
+
+/*Task 31\48
+ЗАДАЧА. ВСЕ ЛИ ПОЛЬЗОВАТЕЛИ АКТИВНЫ
+Дополни функцию isEveryUserActive(users) так, чтобы она проверяла все ли пользователи сейчас активны (свойство isActive)
+ и возвращала true или false.
+ how to do*/
+
+ /*// Change code below this line
+const isEveryUserActive = (users) => {
+  return users.every((user) =>  user.isActive) 
+};
+// Change code above this line
+*/
+
+/*Task 32\48
+МЕТОД SOME()
+Используя метод some() дополни код так, чтобы:
+
+В переменной anyElementInFirstIsEven был результат проверки наличия чётных элементов в массиве firstArray.
+В переменной anyElementInFirstIsOdd был результат проверки наличия нечётных элементов в массиве firstArray.
+В переменной anyElementInSecondIsEven был результат проверки наличия чётных элементов в массиве secondArray.
+В переменной anyElementInSecondIsOdd был результат проверки наличия нечётных элементов в массиве secondArray.
+В переменной anyElementInThirdIsEven был результат проверки наличия чётных элементов в массиве thirdArray.
+В переменной anyElementInThirdIsOdd был результат проверки наличия нечётных элементов в массиве thirdArray.
+how to do*/
+
+/*const firstArray = [26, 94, 36, 18];
+const secondArray = [17, 61, 23];
+const thirdArray = [17, 26, 94, 61, 36, 23, 18];
+// Change below this line
+
+const anyElementInFirstIsEven = firstArray.some(element =>  element  % 2 === 0);
+const anyElementInFirstIsOdd = firstArray.some(element =>  element  % 2 === !0);
+
+const anyElementInSecondIsEven = secondArray.some(element =>  element  % 2 === 0);
+const anyElementInSecondIsOdd = secondArray.some(element =>  !element  % 2 === 0);
+
+const anyElementInThirdIsEven = thirdArray.some(element =>  element  % 2 === 0);
+const anyElementInThirdIsOdd = thirdArray.some(element =>  !element  % 2 === 0);
+*/
+
+/*Task 33\48
+ЗАДАЧА. ЕСТЬ ЛИ АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ
+Дополни функцию isAnyUserActive(users) так, чтобы она проверяла наличие активных пользователей (свойство isActive) и возвращала true или false.
+how to do*/
+
+/*// Change code below this line
+const isAnyUserActive = users => {
+    return users.some((user) =>  user.isActive) 
+
+};
+// Change code above this line
+*/
+
+/*Task 34\48
+REDUCE()
+Игровому сервису необходим функционал подсчёта среднего времени проведённого в играх. 
+Дополни код так, чтобы в переменной totalPlayTime
+ получилось общее игровое время из массива playtimes.
+ how to do*/
+
+ /*const players = {
+  mango: 1270,
+  poly: 468,
+  ajax: 710,
+  kiwi: 244
+};
+const playtimes = Object.values(players); // [1270, 468, 710, 244]
+// Change code below this line
+
+const totalPlayTime = playtimes.reduce(( previousValue, value) => {
+  return previousValue + value;
+} );
+
+// Change code above this line
+const averagePlayTime = totalPlayTime / playtimes.length;*/
+
+/*Task 35\48
+МЕТОД REDUCE()ТА МАСИВ ОБ'ЄКТІВ
+Нашему сервису необходимо рассчитать среднее время проведённое в одной игре для каждого игрока,
+ и получить общую сумму этих времён. Рассчитать время для каждого из игроков, можно разделив
+  его время (свойство playtime) на количество игр (свойство gamesPlayed).
+  how to do*/
+
+  /*const players = [
+  { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+  { name: "Poly", playtime: 469, gamesPlayed: 2 },
+  { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+  { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
+];
+// Change code below this line
+
+const totalAveragePlaytimePerGame = players.reduce((total, player) => {
+  return  total + player.playtime / player.gamesPlayed
+}, 0);
+*/
+
+/*Task 36\48
+ЗАДАЧА. ОБЩИЙ БАЛАНС ПОЛЬЗОВАТЕЛЕЙ
+Дополни функцию calculateTotalBalance(users) так, чтобы она считала и возвращала сумму всех средств
+ (свойство balance) которые хранят пользователи из массива users.
+ how to do*/
+
+ /*// Change code below this line
+const calculateTotalBalance = users => {
+   return users.reduce((total, user) => {
+     return  total + user.balance;
+   }, 0)
+};
+// Change code above this line*/
+
+/*Task 37\48
+ЗАДАЧА. ОБЩЕЕ КОЛИЧЕСТВО ДРУЗЕЙ
+Дополни функцию getTotalFriendCount(users) так, чтобы она считала и возвращала общее количество друзей
+ (свойство friends)  всех пользователей из массива users.
+ how to do*/
+
+ /*// Change code below this line
+const getTotalFriendCount = users => {
+ return users.reduce((total, user) => {
+   return total + user.friends.length
+ }, 0)  
+};
+// Change code above this line
+*/
+
+/*Task 38\48
+МЕТОД SORT()
+Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная по возрастанию
+ копия массива releaseDates, а в переменной alphabeticalAuthors копия массива имён авторов authors
+  отсортированная в по алфавиту.
+  how to do*/
+
+  /*const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+  "Tanith Lee",
+  "Bernard Cornwell",
+  "Robert Sheckley",
+  "Fyodor Dostoevsky",
+];
+// Change code below this line
+
+const ascendingReleaseDates = [...releaseDates].sort();
+
+const alphabeticalAuthors = [...authors].sort();
+*/
+
+/*Task 39\48
+СВОЙ ПОРЯДОК СОРТИРОВКИ ЧИСЕЛ
+Онлайн бибилиотеке необходимо отображать книги сортированные по дате издания, по её возрастанию
+ или убыванию. Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная
+  по возрастанию копия массива releaseDates, а в переменной descendingReleaseDates копия отсортированная
+   по убыванию.
+   how to do*/
+
+   /*const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// Change code below this line
+
+const ascendingReleaseDates = [...releaseDates].sort((a,b) => a - b);
+
+const descendingReleaseDates = [...releaseDates].sort((a,b) => b - a);*/
+
+/*Task 40\48
+СВОЙ ПОРЯДОК СОРТИРОВКИ СТРОК
+Онлайн бибилиотеке необходимо отображать книги отсортированные по автору, в алфавитном
+ и обратном алфавитном порядке. Дополни код так, чтобы в переменной authorsInAlphabetOrder
+  получилась отсортированная по алфавиту копия массива authors, а в переменной authorsInReversedOrder
+   копия отсортированная в обратном алфавитном порядке.
+how to do*/
+
+/*const authors = [
+  "Tanith Lee",
+  "Bernard Cornwell",
+  "Robert Sheckley",
+  "Fyodor Dostoevsky",
+  "Howard Lovecraft",
+];
+// Change code below this line
+
+const authorsInAlphabetOrder = [...authors].sort((a, b) => a.localeCompare(b));
+
+const authorsInReversedOrder = [...authors].sort((a, b) => b.localeCompare(a));
+*/
+
+/*Task 41\48
+СОРТИРОВКА ОБЪЕКТОВ
+Дополни код так, чтобы:
+
+В переменной sortedByAuthorName получился массив книг отсортированный по имени автора в алфавитном порядке.
+В переменной sortedByReversedAuthorName получился массив книг отсортированный по имени автора в обратном алфавитном порядке.
+В переменной sortedByAscendingRating получился массив книг отсортированный по возрастанию рейтинга.
+В переменной sortedByDescentingRating получился массив книг отсортированный по убыванию рейтинга.
+how to do*/
+
+/*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  { title: "Enemy of God", author: "Bernard Cornwell", rating: 8.67 },
+];
+// Change code below this line
+
+const sortedByAuthorName = [...books].sort((firstBook, lastBook) => firstBook.author.localeCompare (lastBook.author) 
+);
+
+const sortedByReversedAuthorName = [...books].sort((firstBook, lastBook) => lastBook.author.localeCompare(firstBook.author));
+
+const sortedByAscendingRating = [...books].sort((firstBook, lastBook) => firstBook.rating - lastBook.rating);
+
+const sortedByDescentingRating = [...books].sort((firstBook, lastBook) => lastBook.rating - firstBook.rating);*/
+
+/*Task 42\48
+ЗАДАЧА. СОРТИРОВКА ПО БАЛАНСУ
+Дополни функцию sortByAscendingBalance(users) так, чтобы она возвращала массив пользователей отсортированный
+ по возрастанию их баланса (свойство balance).
+ how to do */
+
+ /*const sortByAscendingBalance = users => [...users].sort((a, b) => a.balance - b.balance);*/
+
+ /*Task 43\48
+ ЗАДАЧА. СОРТИРОВКА ПО КОЛИЧЕСТВУ ДРУЗЕЙ
+ Дополни функцию sortByDescendingFriendCount(users) так, чтобы она возвращала массив пользователей отсортированный
+  по убыванию количества их друзей (свойство friends).
+  о возрастанию их баланса (свойство balance).
+ how to do*/
+
+ /*// Change code below this line
+const sortByDescendingFriendCount = users =>  [...users].sort((a, b) => b.friends.length - a.friends.length);
+// Change code above this line
+*/
+
+/*Task 44\48
+ЗАДАЧА. СОРТИРОВКА ПО ИМЕНИ
+Дополни функцию sortByName(users) так, чтобы она возвращала массив пользователей отсортированный по их имени (свойство name)
+ в алфавитном порядке.
+ how to do*/
+
+ /*// Change code below this line
+const sortByName = users => [...users].sort((a,b ) => a.name.localeCompare(b.name));
+// Change code above this line*/
+
+/*Task 45\48
+ЦЕПОЧКИ МЕТОДОВ (ЧЕЙНИНГ, CHAINING)
+Дополни код так, чтобы в переменной names получился массив имён авторов в алфавитном порядке, рейтинг книг которых больше
+ значения переменной MIN_BOOK_RATING.
+ how to do*/
+
+ /*const books = [
+  {
+    title: "The Last Kingdom",
+    author: "Bernard Cornwell",
+    rating: 8.38,
+  },
+  {
+    title: "Beside Still Waters",
+    author: "Robert Sheckley",
+    rating: 8.51,
+  },
+  {
+    title: "The Dream of a Ridiculous Man",
+    author: "Fyodor Dostoevsky",
+    rating: 7.75,
+  },
+  { title: "Redder Than Blood", author: "Tanith Lee", rating: 7.94 },
+  {
+    title: "The Dreams in the Witch House",
+    author: "Howard Lovecraft",
+    rating: 8.67,
+  },
+];
+const MIN_BOOK_RATING = 8;
+// Change code below this line
+
+const names = [...books].filter((book)=>book.rating > MIN_BOOK_RATING).sort((a,b)=>a.author.localeCompare(b.author)).map((book => book.author))
+*/
+
+/*Task 46\48
+ЗАДАЧА. ПОЛЬЗОВАТЕЛИ И ДРУЗЬЯ
+Дополни функцию getNamesSortedByFriendCount(users) так, чтобы она возвращала массив имён пользователей отсортированный
+ по возрастанию количества их друзей (свойство friends).
+ how to do*/
+
+ /*// Change code below this line
+const getNamesSortedByFriendCount = users => {
+   return [...users].sort((a,b) => a.friends.length - b.friends.length).map(el => el.name);
+};
+// Change code above this line
+*/
+
+/*Task 47\48
+ЗАДАЧА. ИМЕНА ДРУЗЕЙ
+Дополни функцию getSortedFriends(users) так, чтобы она возвращала массив уникальных
+ имён друзей (свойство friends) отсортированный по алфавиту .*/
+
+ /*// Change code below this line
+const getSortedFriends = users => {
+   return [...users]
+  .flatMap(({friends}) => friends)
+  .filter((element, index, array) => array.indexOf(element) === index)
+  .sort((a,b) => a.localeCompare(b))
+  
+};
+// Change code above this line*/
+
+/*Task 48\48
+ЗАДАЧА. ОБЩИЙ БАЛАНС
+Дополни функцию getTotalBalanceByGender(users, gender) так, чтобы она возвращала
+ общий баланс пользователей (свойство balance), пол которых (свойство gender) совпадает
+  со значением параметра gender.
+  how to do*/
+
+  /*// Change code below this line
+const getTotalBalanceByGender = (users, gender) => {
+   return [...users]
+  .filter(user => user.gender === gender)
+  .reduce((totalBalance, user) => totalBalance + user.balance, 0)
+};
+// Change code above this line*/
+
